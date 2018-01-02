@@ -1,0 +1,3 @@
+read_verilog triport.v
+synth_xilinx -top triport
+write_verilog triport_xilinx.v
