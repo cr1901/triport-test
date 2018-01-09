@@ -2,37 +2,44 @@
 `define REG_WIDTH 5
 `define REG_WIDTH_RANGE (`REG_WIDTH - 1):0
 
-module triport(input clk, input rst, input [`REG_WIDTH_RANGE] rd_addr1,
+module triport(
+    input clk,
+    input rst,
+    input [`REG_WIDTH_RANGE] rd_addr1,
 `ifdef TRIPORT
     input [`REG_WIDTH_RANGE] rd_addr2,
 `endif
-    input [`REG_WIDTH_RANGE] wr_addr, output [`DATA_WIDTH_RANGE] rd_data1,
+    input [`REG_WIDTH_RANGE] wr_addr,
+    output [`DATA_WIDTH_RANGE] rd_data1,
 `ifdef TRIPORT
     output [`DATA_WIDTH_RANGE] rd_data2,
 `endif
-    input [`DATA_WIDTH_RANGE] wr_data, input wen, input stall);
+    input [`DATA_WIDTH_RANGE] wr_data,
+    input wen,
+    input stall
+);
 
     wire [`REG_WIDTH_RANGE] rd_addr1;
-    `ifdef TRIPORT
-        wire [`REG_WIDTH_RANGE] rd_addr2;
-    `endif
     wire [`REG_WIDTH_RANGE] reg_rd_addr1;
     `ifdef TRIPORT
+        wire [`REG_WIDTH_RANGE] rd_addr2;
         wire [`REG_WIDTH_RANGE] reg_rd_addr2;
     `endif
     wire [`REG_WIDTH_RANGE] wr_addr;
 
     `ifdef WRITE_FIRST
         wire [`DATA_WIDTH_RANGE] rd_data1;
-
-        `ifdef TRIPORT
-            wire [`DATA_WIDTH_RANGE] rd_data2;
-        `endif
     `else
         `ifdef READ_FIRST
             reg [`DATA_WIDTH_RANGE] rd_data1;
+        `endif
+    `endif
 
-            `ifdef TRIPORT
+    `ifdef TRIPORT
+        `ifdef WRITE_FIRST
+            wire [`DATA_WIDTH_RANGE] rd_data2;
+        `else
+            `ifdef READ_FIRST
                 reg [`DATA_WIDTH_RANGE] rd_data2;
             `endif
         `endif

@@ -1,0 +1,5 @@
+read_verilog -DWRITE_FIRST triport_explicit.v
+synth_ice40 -top triport_explicit -run :fine
+opt -fine
+show -prefix triport_explicit_cells
+write_verilog triport_explicit_cells.v
