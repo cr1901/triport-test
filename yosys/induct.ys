@@ -1,0 +1,9 @@
+read_verilog -DWRITE_FIRST triport.v
+read_verilog -DWRITE_FIRST triport_explicit.v
+proc triport
+memory triport
+proc triport_explicit
+memory triport_explicit
+equiv_make triport triport_explicit triport_equiv
+equiv_induct triport_equiv
+equiv_status

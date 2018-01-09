@@ -1,5 +1,7 @@
 read_verilog -DWRITE_FIRST triport_explicit.v
 synth_ice40 -top triport_explicit -run :fine
 opt -fine
+# select -list
+# share triport_explicit/$auto$memory_bram.cc:912:replace_cell$85 triport_explicit/$eq$triport_explicit.v:198$11
 show -prefix triport_explicit_cells
 write_verilog triport_explicit_cells.v

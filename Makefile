@@ -1,6 +1,7 @@
-.PHONY: all inferred explicit
+.PHONY: induct inferred explicit
 
-all: inferred explicit
+induct:
+	yosys -ql induct.log -s yosys/induct.ys
 
 inferred:
 	yosys -ql inferred.log -s yosys/inferred.ys
