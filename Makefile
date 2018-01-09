@@ -1,8 +1,5 @@
-ice40:
-	yosys -ql ice40.log -s yosys/ice40.ys
-
-xilinx:
-	yosys -ql xilinx.log -s yosys/xilinx.ys
+inferred:
+	yosys -ql inferred.log -s yosys/inferred.ys
 
 clean:
-	rm triport_*_*.* *.log abc.history
+	rm triport_*_*.* *.log

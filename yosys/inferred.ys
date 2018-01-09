@@ -1,0 +1,5 @@
+read_verilog -DWRITE_FIRST triport.v
+synth_ice40 -top triport -run :fine
+opt -fine
+show -prefix triport_inferred_cells
+write_verilog triport_inferred_cells.v

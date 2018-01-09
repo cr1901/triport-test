@@ -1,9 +1,0 @@
-read_verilog -DWRITE_FIRST triport.v
-synth_xilinx -top triport
-show -prefix triport_xilinx_wrfirst
-write_verilog triport_xilinx_wrfirst.v
-design -reset
-read_verilog -DREAD_FIRST triport.v
-synth_xilinx -top triport
-show -prefix triport_xilinx_rdfirst
-write_verilog triport_xilinx_rdfirst.v

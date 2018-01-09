@@ -1,9 +1,0 @@
-read_verilog -DWRITE_FIRST triport.v
-synth_ice40 -top triport
-show -prefix triport_ice40_wrfirst
-write_verilog triport_ice40_wrfirst.v
-design -reset
-read_verilog -DREAD_FIRST triport.v
-synth_ice40 -top triport
-show -prefix triport_ice40_rdfirst
-write_verilog triport_ice40_rdfirst.v
